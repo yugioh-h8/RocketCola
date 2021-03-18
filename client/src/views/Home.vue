@@ -50,5 +50,3 @@
     background-color: white;
   } */
 </style>
-
-
