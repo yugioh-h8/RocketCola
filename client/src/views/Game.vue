@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <h1 v-if="$store.state.status" style="color: red"> {{this.$store.state.winner}} </h1>
-    <div v-if="!$store.state.status" class="row">
+    <!-- <h1 style="color: red"> {{this.$store.state.winner}} </h1> -->
+    <div class="row">
       <div class="col-6">
         <h6>Cola</h6>
         <br>
-        <p>{{this.$store.state.poinPlayer1}}</p>
+        <p style="color: red">{{this.$store.state.poinPlayer1}}</p>
         <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can1" v-if="count === 2">
         <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can2" v-if="count === 1">
         <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can3" v-if="count === 0">
@@ -14,7 +14,7 @@
       <div class="col-6">
         <h6>Peps</h6>
         <br>
-        <p>{{this.$store.state.poinPlayer2}}</p>
+        <p style="color: red">{{this.$store.state.poinPlayer2}}</p>
         <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can2" v-if="count2 === 1">
         <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can3" v-if="count2 === 0">
         <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can1" v-if="count2 === 2">
@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     shake () {
-      console.log(this.point1)
       this.count = Math.floor(Math.random()* 3)
       this.point1 += 1
       this.$socket.emit('move', 'playerOneClick');
@@ -59,8 +58,10 @@ export default {
       this.$store.commit('SET_STATUS', true)
       if (payload.poinPlayer1 > payload.poinPlayer2) {
         this.$store.commit('SET_WINNER', 'Player 1 Win')
+        this.$router.push('/');
       } else {
         this.$store.commit('SET_WINNER', 'Player 2 Win')
+        this.$router.push('/');
       }
     }
   } 
