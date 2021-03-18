@@ -1,6 +1,6 @@
 const express = require("express")();
-const http = require("http").Server(Express);
-const socketio = require("socket.io")(Http);
+const http = require("http").Server(express);
+const socketio = require("socket.io")(http);
 const PORT = process.env.PORT || 3000;
 
 var position = {
@@ -13,7 +13,7 @@ var gameStart = {
   startGame2 : false,
 }
 
-Socketio.on("connection", socket => {
+socketio.on("connection", socket => {
   socket.emit("position", position);
 
   socket.emit("start", gameStart);
@@ -62,6 +62,6 @@ Socketio.on("connection", socket => {
 });
 
 
-Http.listen(PORT, () => {
+http.listen(PORT, () => {
     console.log(`Listening at ${PORT}:...`);
 });
