@@ -34,7 +34,7 @@ export default {
       count: 0,
       count2: 0,
       point1: 0,
-      point2: 0,
+      point2: 0
     }
   },
   methods: {
@@ -68,81 +68,103 @@ export default {
 </script>
 
 <style>
-p {
-  color: red
-}
-h6 {
-  color: red
-}
-.player1can1 {
-  width: 200px;
+
+.player1can1{
   display: flex;
-  flex-direction: column-reverse;
+  position: relative;
+  left : 4em;
+  top: 150px;
+  width : 26em;
   transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -o-transform: rotate(45deg);
-  margin-top: 470px;
 }
-
-.player1can2 {
-  width: 200px;
+.player1can2{
   display: flex;
-  flex-direction: column-reverse;
+  position: relative;
+  left : 4em;
+  top: 10em;
+  width : 26em;
   transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
-  margin-top: 470px;
-}
 
-.player1can3 {
-  width: 200px;
+}
+.player1can3{
   display: flex;
-  flex-direction: column-reverse;
-  margin-top: 470px;
+  position: relative;
+  left : 4em;
+  top: 150px;
+  width : 26em;
 }
-
-.player2can1 {
-  width: 100px;
-  display: flex;
-  flex-direction: column-reverse;
-  transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-top: 450px;
-}
-
-.player2can2 {
-  width: 100px;
-  display: flex;
-  flex-direction: column-reverse;
-  transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  margin-top: 450px;
-}
-
-.player2can3 {
-  width: 100px;
-  margin-top: 450px;
-}
-
 .shake1 {
+  position: relative;
+  top : 12em;
+}
+.player2can1{
   display: flex;
-  margin-left: 70px;
-  margin-top: 50px;
+  width : 13em;
+  position: relative;
+  left : 9em;
+  top: 8em;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+.player2can2{
+  display: flex;
+  width : 13em;
+  position: relative;
+  left : 9em;
+  top: 8em;
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+}
+.player2can3{
+  display: flex;
+  position: relative;
+  left : 9em;
+  top: 8em;
+  width : 13em;
+}
+.shake2 {
+  position: relative;
+  top : 9.7em;
+  left : -0.8em;
+  border-radius: 50%;
 }
 
-.shake2 {
-  display: flex;
-  margin-left: 240px;
-  margin-top: 50px;
+.txt {
+  position: relative;
+  top : 6.5em;
+  color : red;
+}
+
+.pointP1 {
+  font-size : 30px;
+  margin-top : -1em;
+  margin-bottom: -1em;
+}
+
+.txt2 { 
+  position: relative;
+  top : 6em;
+  left: -1em;
+  color : red;
+}
+
+.pointP2 {
+  font-size : 30px;
+  margin-top : -1em;
+  margin-bottom: -1em;
 }
 </style>
