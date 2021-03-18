@@ -1,6 +1,6 @@
-const Express = require("express")();
-const Http = require("http").Server(Express);
-const Socketio = require("socket.io")(Http);
+const express = require("express")();
+const http = require("http").Server(Express);
+const socketio = require("socket.io")(Http);
 const PORT = process.env.PORT || 3000;
 
 var position = {
