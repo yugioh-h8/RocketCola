@@ -20,14 +20,16 @@ export default {
   methods: {
     playerOneReady() {
       this.$socket.emit('gameStart', 'playerOneReady');
+      this.$store.commit('SET_WINNER', ' ');
     },
     playerTwoReady() {
       this.$socket.emit('gameStart', 'playerTwoReady');
+      this.$store.commit('SET_WINNER', ' ');
     },
   },
   sockets: {
     start (gameStart) {
-      if (gameStart.startGame1 && gameStart.startGame1) {
+      if (gameStart.startGame1 && gameStart.startGame2) {
         this.$store.commit('SET_STATUS', true)
         this.$router.push('/game')
       }
