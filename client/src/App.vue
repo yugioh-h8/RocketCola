@@ -11,7 +11,7 @@
 }
 
 body {
-  background-image: url('https://images.unsplash.com/photo-1541185934-01b600ea069c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1000&q=80');
+  background-image: url('https://cdn.dribbble.com/users/2926394/screenshots/6536373/_____2.gif');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

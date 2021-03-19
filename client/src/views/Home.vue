@@ -1,131 +1,408 @@
 <template>
-  <div class="container">
+  <div class="container-fluid px-0">
     <div class="row">
-      <div class="col-6">
-        <h6>Cola</h6>
-        <br>
-        <p>{{point1}}</p>
-        <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can1" v-if="count === 2">
-        <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can2" v-if="count === 1">
-        <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can3" v-if="count === 0">
-        <button @click.prevent="shake" class="shake1">SHAKE</button>
+      <div class="col-6 vh-100 t1">
+        <div class="player1">
+          <img class="p1" src="https://media3.giphy.com/media/TJmoBmGk4XXkcI6P3t/giphy.gif" alt="test">
+        <button type="button" class="btn btn1" @click.prevent="playerOneReady" v-if="!$store.state.token_1">Player 1 Ready</button>
+        </div>
+        <div class="player2">
+          <img class="p2" src="https://i.gifer.com/X5NY.gif" alt="">
+        <button type="button" class="btn btn2"  @click.prevent="playerTwoReady" v-if="!$store.state.token_2">Player 2 Ready</button>
+        </div>
       </div>
-      <div class="col-6">
-        <h6>Peps</h6>
+      <div class="col-6 vh-100 right">
+      <div class="text-rules">
+        <h3>Aturan Bermain :</h3>
+        <ol>
+          <li class="rules">Untuk bermain, kedua player harus menekan tombol ready terlebih dahulu</li>
+          <li class="rules">Pemain akan mendapatkan point dengan menekan tombol</li>
+          <li class="rules">Kumpulkan point sebanyak 50, yang mendapatkan point 50 terlebih dahulu maka dia lah pemenang nya</li>
+        </ol>
         <br>
-        <p>{{point2}}</p>
-        <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can2" v-if="count2 === 1">
-        <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can3" v-if="count2 === 0">
-        <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can1" v-if="count2 === 2">
-        <button @click.prevent="shake2" class="shake2">SHAKE</button>
+      </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import Astro1 from '../audio/astro1.mp4'
+import Astro2 from '../audio/astro2.mp4'
 
 export default {
-  name: 'Home',
-  data () {
-    return {
-      count: 0,
-      count2: 0,
-      point1: 0,
-      point2: 0
-    }
-  },
   methods: {
-    shake () {
-      console.log(this.point1)
-      this.count = Math.floor(Math.random()* 3)
-      this.point1 += 1
+    playerOneReady() {
+      this.$socket.emit('gameStart', 'playerOneReady');
+      this.$store.commit('SET_WINNER', ' ');
+      localStorage.setItem('access_token_1', 'aijsijdioej')
+      const astro1 = new Audio(Astro1)
+      astro1.play()
+      // if (localStorage.access_token_1) {
+      //   this.$store.commit('SET_TOKEN_1', true);
+      // } else {
+      //   this.$store.commit('SET_TOKEN_1', false);
+      // }
     },
-    shake2 () {
-      this.count2 = Math.floor(Math.random()* 3)
-      this.point2 += 1
+    playerTwoReady() {
+      this.$socket.emit('gameStart', 'playerTwoReady');
+      this.$store.commit('SET_WINNER', ' ');
+      localStorage.setItem('access_token_2', 'aijsijdioej')
+      const astro2 = new Audio(Astro2)
+      astro2.play()
+      // if (localStorage.access_token_2) {
+      //   this.$store.commit('SET_TOKEN_2', true);
+      // } else {
+      //   this.$store.commit('SET_TOKEN_2', false);
+      // }
+    },
+  },
+  sockets: {
+    start (gameStart) {
+      if (gameStart.startGame1 && gameStart.startGame2) {
+        this.$store.commit('SET_STATUS', true)
+        this.$router.push('/game')
+      }
+
+      if (gameStart.startGame1) {
+        this.$store.commit('SET_TOKEN_1', true);
+      } 
+
+      if (gameStart.startGame2) {
+        this.$store.commit('SET_TOKEN_2', true);
+      } 
+
     }
   }
 }
 </script>
 
-<style>
-p {
-  color: red
-}
-h6 {
-  color: red
-}
-.player1can1 {
-  width: 200px;
-  display: flex;
-  flex-direction: column-reverse;
-  transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-top: 470px;
+
+
+<style scoped>
+
+@media (min-width: 1100px) and (max-width: 1400px) { 
+  *{
+      font-family: 'Poppins', sans-serif;
+      margin: 0px;
+  }
+  .p2 {
+    position: relative;
+    width : 26em;
+    left: -37px;
+  }
+  .player2 {
+    position: relative;
+    top:  45px;
+  }
+  .p1 {
+    width : 26em;
+    position: relative;
+    left: -20px;
+  }
+
+  .rules{
+      text-align : left;
+      margin-left : 20px;
+      margin-top: 15px;
+  }
+  .text-rules{
+    position: relative;
+    top : 70px;
+    color : white;
+  }
+  h3{
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+  }
+  li{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .btn1{
+    color : white;
+    letter-spacing: 2px;
+    background-color : #7A3672!important;
+  }
+  .btn2{
+    color : white;
+    letter-spacing: 2px;
+    position: relative;
+    left : 1px;
+    background-color : #7A3672!important;
+  }
+  .right{
+    background-color: #1A1A48;
+  }
 }
 
-.player1can2 {
-  width: 200px;
-  display: flex;
-  flex-direction: column-reverse;
-  transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  margin-top: 470px;
+@media (min-width: 992px) { 
+    .p2 {
+      position: relative;
+      width : 26em;
+      left: -37px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -20px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : 5px;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : 19px;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    }
 }
 
-.player1can3 {
-  width: 200px;
-  display: flex;
-  flex-direction: column-reverse;
-  margin-top: 470px;
+@media (min-width : 778px) {
+  .p2 {
+      position: relative;
+      width : 26em;
+      left: -37px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -20px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : 5px;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : 18px;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    }
 }
 
-.player2can1 {
-  width: 100px;
-  display: flex;
-  flex-direction: column-reverse;
-  transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-top: 450px;
+@media (min-width : 920px){
+  .p2 {
+      position: relative;
+      width : 26em;
+      left: -37px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -20px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : 5px;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : 18px;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    }
 }
 
-.player2can2 {
-  width: 100px;
-  display: flex;
-  flex-direction: column-reverse;
-  transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  margin-top: 450px;
+@media (min-width: 650px) { 
+    .p2 {
+        position: relative;
+        width : 26em;
+        left: -37px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -20px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : 5px;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : 18px;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    } 
 }
 
-.player2can3 {
-  width: 100px;
-  margin-top: 450px;
+@media (min-width: 576px)  { 
+    .p2 {
+      position: relative;
+      width : 26em;
+      left: -113px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -85px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : -1em;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : -0.7em;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    }
 }
 
-.shake1 {
-  display: flex;
-  margin-left: 70px;
-  margin-top: 50px;
-}
-
-.shake2 {
-  display: flex;
-  margin-left: 240px;
-  margin-top: 50px;
-}
 </style>
