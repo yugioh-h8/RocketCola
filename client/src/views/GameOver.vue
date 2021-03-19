@@ -2,7 +2,7 @@
   <div>
     <img src="https://media2.giphy.com/media/3ohs4rclkSSrNGSlFK/200.gif" class="rocket">
     <h1>{{this.$store.state.winner}}</h1>
-    <button type="button" class="btn btn-danger border-dark mt-3" @click.prevent="abort">ABORT MISSION!</button>
+    <button type="button" class="btn btn-danger border-dark mt-2 mb-4" @click.prevent="abort">ABORT MISSION!</button>
   </div>
 </template>
 
@@ -19,9 +19,9 @@ export default {
       this.$router.push('/')
     }
   },
-  created () {
-    rocketover.play()
-  }
+  // created () {
+  //   rocketover.play()
+  // }
 }
 </script>
 
@@ -31,7 +31,14 @@ export default {
 }
 
 h1 {
-  top: -50px;
-  position: absolute
+  position: relative;
+  color : #DC4045;
+  top : -10em;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.btn{
+  border-radius: 10px;
 }
 </style>

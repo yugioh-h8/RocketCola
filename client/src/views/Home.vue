@@ -19,6 +19,7 @@
           <li class="rules">Pemain akan mendapatkan point dengan menekan tombol</li>
           <li class="rules">Kumpulkan point sebanyak 50, yang mendapatkan point 50 terlebih dahulu maka dia lah pemenang nya</li>
         </ol>
+        <br>
       </div>
       </div>
     </div>
@@ -79,6 +80,8 @@ export default {
 
 
 <style scoped>
+
+@media (min-width: 1100px) and (max-width: 1400px) { 
   *{
       font-family: 'Poppins', sans-serif;
       margin: 0px;
@@ -124,10 +127,282 @@ export default {
     color : white;
     letter-spacing: 2px;
     position: relative;
-    left : 7px;
+    left : 1px;
     background-color : #7A3672!important;
   }
   .right{
     background-color: #1A1A48;
   }
+}
+
+@media (min-width: 992px) { 
+    .p2 {
+      position: relative;
+      width : 26em;
+      left: -37px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -20px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : 5px;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : 19px;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    }
+}
+
+@media (min-width : 778px) {
+  .p2 {
+      position: relative;
+      width : 26em;
+      left: -37px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -20px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : 5px;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : 18px;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    }
+}
+
+@media (min-width : 920px){
+  .p2 {
+      position: relative;
+      width : 26em;
+      left: -37px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -20px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : 5px;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : 18px;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    }
+}
+
+@media (min-width: 650px) { 
+    .p2 {
+        position: relative;
+        width : 26em;
+        left: -37px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -20px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : 5px;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : 18px;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    } 
+}
+
+@media (min-width: 576px)  { 
+    .p2 {
+      position: relative;
+      width : 26em;
+      left: -113px;
+    }
+    .player2 {
+      position: relative;
+      top:  45px;
+    }
+    .p1 {
+      width : 26em;
+      position: relative;
+      left: -85px;
+    }
+
+    .rules{
+        text-align : left;
+        margin-left : 20px;
+        margin-top: 15px;
+    }
+    .text-rules{
+      position: relative;
+      top : 70px;
+      color : white;
+    }
+    h3{
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    li{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn1{
+      position: relative;
+      top: 2em;
+      left : -1em;
+      color : white;
+      letter-spacing: 2px;
+      background-color : #7A3672!important;
+    }
+    .btn2{
+      color : white;
+      letter-spacing: 2px;
+      position: relative;
+      left : -0.7em;
+      top : -8px;
+      background-color : #7A3672!important;
+    }
+    .right{
+      background-color: #1A1A48;
+    }
+}
+
 </style>
