@@ -25,6 +25,31 @@
   </div>
 </template>
 
+<script>
+export default {
+  methods: {
+    playerOneReady() {
+      this.$socket.emit('gameStart', 'playerOneReady');
+      this.$store.commit('SET_WINNER', ' ');
+    },
+    playerTwoReady() {
+      this.$socket.emit('gameStart', 'playerTwoReady');
+      this.$store.commit('SET_WINNER', ' ');
+    },
+  },
+  sockets: {
+    start (gameStart) {
+      if (gameStart.startGame1 && gameStart.startGame2) {
+        this.$store.commit('SET_STATUS', true)
+        this.$router.push('/game')
+      }
+    }
+  }
+}
+</script>
+
+
+
 <style scoped>
   *{
       font-family: 'Poppins', sans-serif;
@@ -78,5 +103,3 @@
     background-color: #1A1A48;
   }
 </style>
-
-
