@@ -30,7 +30,14 @@
 
 <script>
 // @ is an alias to /src
-
+import Shake from '../audio/shake.mp4'
+import Cola from '../audio/cola.mp4'
+import Launch from '../audio/launchrocket.mp4'
+import Gamesong from '../audio/gamesong.mp4'
+const gamesong = new Audio(Gamesong)
+const launch = new Audio(Launch)
+const cola = new Audio(Cola)
+const shake = new Audio(Shake)
 export default {
   name: 'Game',
   data () {
@@ -46,15 +53,27 @@ export default {
       this.count = Math.floor(Math.random()* 3)
       this.point1 += 1
       this.$socket.emit('move', 'playerOneClick');
+      shake.play()
+      cola.play()
+      setTimeout(() => {
+          shake.play()
+          cola.play()
+        }, 1100)
     },
     shake2 () {
       this.count2 = Math.floor(Math.random()* 3)
       this.point2 += 1
       this.$socket.emit('move', 'playerTwoClick');
+      shake.play()
+      cola.play()
+      setTimeout(() => {
+          shake.play()
+          cola.play()
+        }, 1100)
     }
   },
   created () {
-
+    gamesong.play()
   },
   sockets: {
     position (playerPosition) {
@@ -68,7 +87,10 @@ export default {
         // localStorage.removeItem('access_token_2')
         this.$store.commit('SET_TOKEN_1', false);
         this.$store.commit('SET_TOKEN_2', false);
+        launch.play()
+        gamesong.pause()
         setTimeout(() => {
+          launch.pause()
           this.$router.push('/gameover');
         }, 3000)
       } else {
@@ -78,7 +100,9 @@ export default {
         // localStorage.removeItem('access_token_2')
         this.$store.commit('SET_TOKEN_1', false);
         this.$store.commit('SET_TOKEN_2', false);
+        launch.play()
         setTimeout(() => {  
+          launch.pause()
           this.$router.push('/gameover');
         }, 3000)
       }
