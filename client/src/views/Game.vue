@@ -1,11 +1,12 @@
 <template>
   <div class="container">
+    <h1 style="color: red"> {{this.$store.state.winner}} </h1>
     <div class="row">
       <div class="col-6">
         <div class="txt">
           <h2>Player 1</h2>
           <br>
-          <p class="pointP1">{{point1}}</p>
+          <p class="pointP1">{{this.$store.state.poinPlayer1}}</p>
         </div>
         <div class="images1">
           <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can1" v-if="count === 2">
@@ -19,7 +20,7 @@
         <div class="txt2">
           <h2>Player 2</h2>
           <br>
-          <p class="pointP2">{{point2}}</p>
+          <p class="pointP2">{{this.$store.state.poinPlayer2}}</p>
         </div>
         <div class="images2">
           <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can2" v-if="count2 === 1">
@@ -35,7 +36,14 @@
 
 <script>
 // @ is an alias to /src
-
+import Shake from '../audio/shake.mp4'
+import Cola from '../audio/cola.mp4'
+import Launch from '../audio/launchrocket.mp4'
+import Gamesong from '../audio/gamesong.mp4'
+const gamesong = new Audio(Gamesong)
+const launch = new Audio(Launch)
+const cola = new Audio(Cola)
+const shake = new Audio(Shake)
 export default {
   name: 'Game',
   data () {
@@ -48,15 +56,64 @@ export default {
   },
   methods: {
     shake () {
-      console.log(this.point1)
       this.count = Math.floor(Math.random()* 3)
       this.point1 += 1
+      this.$socket.emit('move', 'playerOneClick');
+      shake.play()
+      cola.play()
+      setTimeout(() => {
+          shake.play()
+          cola.play()
+        }, 1100)
     },
     shake2 () {
       this.count2 = Math.floor(Math.random()* 3)
       this.point2 += 1
+      this.$socket.emit('move', 'playerTwoClick');
+      shake.play()
+      cola.play()
+      setTimeout(() => {
+          shake.play()
+          cola.play()
+        }, 1100)
     }
-  }
+  },
+  created () {
+    gamesong.play()
+  },
+  sockets: {
+    position (playerPosition) {
+      this.$store.commit('SET_POIN_1', playerPosition)
+    },
+    finish (payload) {
+      this.$store.commit('SET_STATUS', true)
+      if (payload.poinPlayer1 > payload.poinPlayer2) {
+        this.$store.commit('SET_WINNER', 'Player 1 Win');
+        // localStorage.removeItem('access_token_1')
+        // localStorage.removeItem('access_token_2')
+        this.$store.commit('SET_TOKEN_1', false);
+        this.$store.commit('SET_TOKEN_2', false);
+        launch.play()
+        gamesong.pause()
+        setTimeout(() => {
+          launch.pause()
+          this.$router.push('/gameover');
+        }, 3000)
+      } else {
+        this.$store.commit('SET_WINNER', 'Player 2 Win');
+        // this.$router.push('/');
+        // localStorage.removeItem('access_token_1')
+        // localStorage.removeItem('access_token_2')
+        this.$store.commit('SET_TOKEN_1', false);
+        this.$store.commit('SET_TOKEN_2', false);
+        launch.play()
+        setTimeout(() => {  
+          launch.pause()
+          this.$router.push('/gameover');
+        }, 3000)
+      }
+    }
+  } 
 }
 </script>
 

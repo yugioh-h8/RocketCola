@@ -3,42 +3,43 @@ const http = require("http").Server(express);
 const socketio = require("socket.io")(http);
 const PORT = process.env.PORT || 3000;
 
-var position = {
+let position = {
   poinPlayer1: 0,
   poinPlayer2: 0
 };
 
-var gameStart = {
+let gameStart = {
   startGame1 : false,
   startGame2 : false,
 }
 
-socketio.on("connection", socket => {
+socketio.on("connection", (socket) => {
   socket.emit("position", position);
-
   socket.emit("start", gameStart);
 
   socket.on("move", data => {
     switch(data) {
       case "playerOneClick":
-        position.poinPlayer1 += data;
-        if (position.poinPlayer1 >= 100) {
+        position.poinPlayer1 += 1;
+        if (position.poinPlayer1 >= 50) {
           gameStart.startGame1 = false;
           gameStart.startGame2 = false;
-
-          Socketio.emit("finish", position);
+          socketio.emit("finish", position);
+          socket.emit("start", gameStart);
         }
-        Socketio.emit("position", position);
+        socket.emit("start", gameStart);
+        socketio.emit("position", position);
         break;
       case "playerTwoClick":
-        position.poinPlayer2 += data;
-        if (position.poinPlayer2 >= 100) {
+        position.poinPlayer2 += 1;
+        if (position.poinPlayer2 >= 50) {
           gameStart.startGame1 = false;
           gameStart.startGame2 = false;
-
-          Socketio.emit("finish", position);
+          socketio.emit("finish", position);
+          socket.emit("start", gameStart);
         }
-        Socketio.emit("position", position);
+        socket.emit("start", gameStart);
+        socketio.emit("position", position);
         break;
       }
   });
@@ -49,13 +50,15 @@ socketio.on("connection", socket => {
         gameStart.startGame1 = true;
         position.poinPlayer1 = 0;
         position.poinPlayer2 = 0;
-        Socketio.emit("start", gameStart);
+        socketio.emit("start", gameStart);
+        socketio.emit("position", position);
         break;
       case "playerTwoReady":
         gameStart.startGame2 = true;
         position.poinPlayer2 = 0;
         position.poinPlayer1 = 0;
-        Socketio.emit("start", gameStart);
+        socketio.emit("start", gameStart);
+        socketio.emit("position", position);
         break;
     }
   })
