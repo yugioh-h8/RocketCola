@@ -236,7 +236,112 @@ export default {
   }
 }
 
-/* @media (min-width: 950px)  { 
+@media (min-width: 950px)  { 
+  .player1can1{
+      display: flex;
+      position: relative;
+      left : -1.8em;
+      top: 150px;
+      width : 26em;
+      transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+  }
+  .player1can2{
+    display: flex;
+    position: relative;
+    left : 1.8em;
+    top: 10em;
+    width : 26em;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+  }
+  .player1can3{
+    display: flex;
+    position: relative;
+    left : 1.8em;
+    top: 150px;
+    width : 26em;
+  }
+  .shake1 {
+    position: relative;
+    top : 11.5em;
+    color : white !important;
+    letter-spacing: 2px;
+    background-color : #7A3672!important;
+  }
+  .player2can1{
+    display: flex;
+    width : 13em;
+    position: relative;
+    left :7em;
+    top: 8em;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+  }
+  .player2can2{
+    display: flex;
+    width : 13em;
+    position: relative;
+    left :7em;
+    top: 8em;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+  }
+  .player2can3{
+    display: flex;
+    position: relative;
+    left :7em;
+    top: 8em;
+    width : 13em;
+  }
+  .shake2 {
+    position: relative;
+    top : 9.7em;
+    left : -0.8em;
+    color : white !important;
+    letter-spacing: 2px;
+    background-color : #7A3672!important;
+  }
+
+  .txt {
+    position: relative;
+    top : 6.5em;
+    color : #E4ACE5;
+  }
+
+  .pointP1 {
+    font-size : 30px;
+    margin-top : -1em;
+    margin-bottom: -1em;
+  }
+
+  .txt2 { 
+    position: relative;
+    top : 6em;
+    left: -1em;
+    color : #E4ACE5;
+  }
+
+  .pointP2 {
+    font-size : 30px;
+    margin-top : -1em;
+    margin-bottom: -1em;
+  }
+}
+
+@media (min-width: 984px)  { 
   .player1can1{
       display: flex;
       position: relative;
@@ -339,6 +444,123 @@ export default {
     margin-top : -1em;
     margin-bottom: -1em;
   }
-} */
+}
+
+@media (min-width: 890px)  { 
+  .p2Game{
+    position: relative;
+    left : 8em;
+    width : 18em;
+    bottom : 11em
+  }
+  .p1Game{
+    position: relative;
+    right : 10em;
+    width : 18em;
+    bottom : 6em
+  }
+  .player1can1{
+      display: flex;
+      position: relative;
+      left : -1em;
+      top: 150px;
+      width : 23em;
+      transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+  }
+  .player1can2{
+    display: flex;
+    position: relative;
+    left : -1em;
+    top: 10em;
+    width : 23em;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+  }
+  .player1can3{
+    display: flex;
+    position: relative;
+    left : -1em;
+    top: 150px;
+    width : 23em;
+  }
+  .shake1 {
+    position: relative;
+    top : 11.5em;
+    color : white !important;
+    letter-spacing: 2px;
+    background-color : #7A3672!important;
+  }
+  .player2can1{
+    display: flex;
+    width : 12.1em;
+    position: relative;
+    left :3em;
+    top: 8em;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+  }
+  .player2can2{
+    display: flex;
+    width : 12.1em;
+    position: relative;
+    left :3em;
+    top: 8em;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+  }
+  .player2can3{
+    display: flex;
+    position: relative;
+    left :3em;
+    top: 8em;
+    width : 12.1em;
+  }
+  .shake2 {
+    position: relative;
+    top : 9.7em;
+    left : -0.8em;
+    color : white !important;
+    letter-spacing: 2px;
+    background-color : #7A3672!important;
+  }
+
+  .txt {
+    position: relative;
+    top : 6.5em;
+    color : #E4ACE5;
+  }
+
+  .pointP1 {
+    font-size : 30px;
+    margin-top : -1em;
+    margin-bottom: -1em;
+  }
+
+  .txt2 { 
+    position: relative;
+    top : 6em;
+    left: -1em;
+    color : #E4ACE5;
+  }
+
+  .pointP2 {
+    font-size : 30px;
+    margin-top : -1em;
+    margin-bottom: -1em;
+  }
+}
 
 </style>
