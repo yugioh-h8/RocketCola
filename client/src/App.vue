@@ -11,7 +11,7 @@
 }
 
 body {
-  background-image: url('./assets/galaxy.webp');
+  background-image: url('https://cdn.dribbble.com/users/2926394/screenshots/6536373/_____2.gif');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

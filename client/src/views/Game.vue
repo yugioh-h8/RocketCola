@@ -3,22 +3,26 @@
     <h1 style="color: red"> {{this.$store.state.winner}} </h1>
     <div class="row">
       <div class="col-6">
-        <h6>Cola</h6>
-        <br>
-        <p style="color: red">{{this.$store.state.poinPlayer1}}</p>
+        <div class="txt">
+          <h2>Player 1</h2>
+          <br>
+          <p class="pointP1">{{this.$store.state.poinPlayer1}}</p>
+        </div>
         <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can1" v-if="count === 2">
         <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can2" v-if="count === 1">
         <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG22.png" class="player1can3" v-if="count === 0">
-        <button @click.prevent="shake" class="shake1">SHAKE</button>
+        <button @click.prevent="shake" type="button" class="btn shake1">SHAKE</button>
       </div>
       <div class="col-6">
-        <h6>Peps</h6>
-        <br>
-        <p style="color: red">{{this.$store.state.poinPlayer2}}</p>
+        <div class="txt2">
+          <h2>Player 2</h2>
+          <br>
+          <p class="pointP2">{{this.$store.state.poinPlayer2}}</p>
+        </div>
         <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can2" v-if="count2 === 1">
         <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can3" v-if="count2 === 0">
         <img src="https://pngimg.com/uploads/pepsi/pepsi_PNG8.png" class="player2can1" v-if="count2 === 2">
-        <button @click.prevent="shake2" class="shake2">SHAKE</button>
+        <button @click.prevent="shake2" type="button" class="btn shake2">SHAKE</button>
       </div>
     </div>
   </div>
@@ -103,7 +107,10 @@ export default {
 }
 .shake1 {
   position: relative;
-  top : 12em;
+  top : 11.5em;
+  color : white !important;
+  letter-spacing: 2px;
+  background-color : #7A3672!important;
 }
 .player2can1{
   display: flex;
@@ -140,13 +147,15 @@ export default {
   position: relative;
   top : 9.7em;
   left : -0.8em;
-  border-radius: 50%;
+  color : white !important;
+  letter-spacing: 2px;
+  background-color : #7A3672!important;
 }
 
 .txt {
   position: relative;
   top : 6.5em;
-  color : red;
+  color : #E4ACE5;
 }
 
 .pointP1 {
@@ -159,7 +168,7 @@ export default {
   position: relative;
   top : 6em;
   left: -1em;
-  color : red;
+  color : #E4ACE5;
 }
 
 .pointP2 {
