@@ -4,11 +4,11 @@
       <div class="col-6 vh-100 t1">
         <div class="player1">
           <img class="p1" src="https://media3.giphy.com/media/TJmoBmGk4XXkcI6P3t/giphy.gif" alt="test">
-        <button type="button" class="btn btn1">Player 1</button>
+        <button type="button" class="btn btn1" @click.prevent="playerOneReady" v-if="!$store.state.token_1 && !$store.state.token_2">Player 1</button>
         </div>
         <div class="player2">
           <img class="p2" src="https://i.gifer.com/X5NY.gif" alt="">
-        <button type="button" class="btn btn2">Player 2</button>
+        <button type="button" class="btn btn2"  @click.prevent="playerTwoReady" v-if="!$store.state.token_2 && !$store.state.token_1">Player 2</button>
         </div>
       </div>
       <div class="col-6 vh-100 right">
@@ -31,10 +31,22 @@ export default {
     playerOneReady() {
       this.$socket.emit('gameStart', 'playerOneReady');
       this.$store.commit('SET_WINNER', ' ');
+      localStorage.setItem('access_token_1', 'aijsijdioej')
+      // if (localStorage.access_token_1) {
+      //   this.$store.commit('SET_TOKEN_1', true);
+      // } else {
+      //   this.$store.commit('SET_TOKEN_1', false);
+      // }
     },
     playerTwoReady() {
       this.$socket.emit('gameStart', 'playerTwoReady');
       this.$store.commit('SET_WINNER', ' ');
+      localStorage.setItem('access_token_2', 'aijsijdioej')
+      // if (localStorage.access_token_2) {
+      //   this.$store.commit('SET_TOKEN_2', true);
+      // } else {
+      //   this.$store.commit('SET_TOKEN_2', false);
+      // }
     },
   },
   sockets: {
@@ -43,6 +55,15 @@ export default {
         this.$store.commit('SET_STATUS', true)
         this.$router.push('/game')
       }
+
+      if (gameStart.startGame1) {
+        this.$store.commit('SET_TOKEN_1', true);
+      } 
+
+      if (gameStart.startGame2) {
+        this.$store.commit('SET_TOKEN_2', true);
+      } 
+
     }
   }
 }
