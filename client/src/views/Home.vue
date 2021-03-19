@@ -26,12 +26,17 @@
 </template>
 
 <script>
+import Astro1 from '../audio/astro1.mp4'
+import Astro2 from '../audio/astro2.mp4'
+
 export default {
   methods: {
     playerOneReady() {
       this.$socket.emit('gameStart', 'playerOneReady');
       this.$store.commit('SET_WINNER', ' ');
       localStorage.setItem('access_token_1', 'aijsijdioej')
+      const astro1 = new Audio(Astro1)
+      astro1.play()
       // if (localStorage.access_token_1) {
       //   this.$store.commit('SET_TOKEN_1', true);
       // } else {
@@ -42,6 +47,8 @@ export default {
       this.$socket.emit('gameStart', 'playerTwoReady');
       this.$store.commit('SET_WINNER', ' ');
       localStorage.setItem('access_token_2', 'aijsijdioej')
+      const astro2 = new Audio(Astro2)
+      astro2.play()
       // if (localStorage.access_token_2) {
       //   this.$store.commit('SET_TOKEN_2', true);
       // } else {

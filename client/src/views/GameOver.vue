@@ -7,14 +7,20 @@
 </template>
 
 <script>
+import Rocketover from '../audio/rocketover.mp4'
+const rocketover = new Audio(Rocketover)
 export default {
   name: 'GameOver',
   methods: {
     abort () {
       localStorage.removeItem('access_token_1')
       localStorage.removeItem('access_token_2')
+      rocketover.pause()
       this.$router.push('/')
     }
+  },
+  created () {
+    rocketover.play()
   }
 }
 </script>
