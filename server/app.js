@@ -3,12 +3,12 @@ const http = require("http").Server(express);
 const socketio = require("socket.io")(http);
 const PORT = process.env.PORT || 3000;
 
-var position = {
+let position = {
   poinPlayer1: 0,
   poinPlayer2: 0
 };
 
-var gameStart = {
+let gameStart = {
   startGame1 : false,
   startGame2 : false,
 }
@@ -16,10 +16,6 @@ var gameStart = {
 socketio.on("connection", (socket) => {
   socket.emit("position", position);
   socket.emit("start", gameStart);
-  
-  socket.on('test', data => {
-
-  })
 
   socket.on("move", data => {
     switch(data) {
@@ -53,12 +49,14 @@ socketio.on("connection", (socket) => {
         position.poinPlayer1 = 0;
         position.poinPlayer2 = 0;
         socketio.emit("start", gameStart);
+        socketio.emit("position", position);
         break;
       case "playerTwoReady":
         gameStart.startGame2 = true;
         position.poinPlayer2 = 0;
         position.poinPlayer1 = 0;
         socketio.emit("start", gameStart);
+        socketio.emit("position", position);
         break;
     }
   })

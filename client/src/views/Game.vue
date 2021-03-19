@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <!-- <h1 style="color: red"> {{this.$store.state.winner}} </h1> -->
+    <h1 style="color: red"> {{this.$store.state.winner}} </h1>
     <div class="row">
       <div class="col-6">
         <h6>Cola</h6>
@@ -47,7 +47,6 @@ export default {
       this.count2 = Math.floor(Math.random()* 3)
       this.point2 += 1
       this.$socket.emit('move', 'playerTwoClick');
-
     }
   },
   sockets: {
@@ -57,11 +56,11 @@ export default {
     finish (payload) {
       this.$store.commit('SET_STATUS', true)
       if (payload.poinPlayer1 > payload.poinPlayer2) {
-        this.$store.commit('SET_WINNER', 'Player 1 Win')
-        this.$router.push('/');
+        this.$store.commit('SET_WINNER', 'Player 1 Win');
+        // this.$router.push('/');
       } else {
-        this.$store.commit('SET_WINNER', 'Player 2 Win')
-        this.$router.push('/');
+        this.$store.commit('SET_WINNER', 'Player 2 Win');
+        // this.$router.push('/');
       }
     }
   } 
