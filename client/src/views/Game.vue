@@ -64,22 +64,22 @@ export default {
       this.$store.commit('SET_STATUS', true)
       if (payload.poinPlayer1 > payload.poinPlayer2) {
         this.$store.commit('SET_WINNER', 'Player 1 Win');
-        localStorage.removeItem('access_token_1')
-        localStorage.removeItem('access_token_2')
+        // localStorage.removeItem('access_token_1')
+        // localStorage.removeItem('access_token_2')
         this.$store.commit('SET_TOKEN_1', false);
         this.$store.commit('SET_TOKEN_2', false);
         setTimeout(() => {
-          this.$router.push('/');
+          this.$router.push('/gameover');
         }, 3000)
       } else {
         this.$store.commit('SET_WINNER', 'Player 2 Win');
         // this.$router.push('/');
-        localStorage.removeItem('access_token_1')
-        localStorage.removeItem('access_token_2')
+        // localStorage.removeItem('access_token_1')
+        // localStorage.removeItem('access_token_2')
         this.$store.commit('SET_TOKEN_1', false);
         this.$store.commit('SET_TOKEN_2', false);
         setTimeout(() => {  
-          this.$router.push('/');
+          this.$router.push('/gameover');
         }, 3000)
       }
     }

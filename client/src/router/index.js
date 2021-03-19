@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Game from '../views/Game.vue'
+import GameOver from '../views/GameOver.vue'
 
 Vue.use(VueRouter)
 
@@ -19,7 +20,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
   },
   {
-    path: ''
+    path: '/gameover',
+    name: 'GameOver',
+    component: GameOver
   }
 ]
 
@@ -30,7 +33,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name === 'Game' && !localStorage.access_token_1 && !localStorage.access_token_2) {
+  if (to.name !== 'Home' && !localStorage.access_token_1 && !localStorage.access_token_2) {
     next({
       name : 'Home'
     })

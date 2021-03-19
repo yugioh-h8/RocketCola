@@ -21,22 +21,24 @@ socketio.on("connection", (socket) => {
     switch(data) {
       case "playerOneClick":
         position.poinPlayer1 += 1;
-        if (position.poinPlayer1 >= 10) {
+        if (position.poinPlayer1 >= 50) {
           gameStart.startGame1 = false;
           gameStart.startGame2 = false;
-
           socketio.emit("finish", position);
+          socket.emit("start", gameStart);
         }
+        socket.emit("start", gameStart);
         socketio.emit("position", position);
         break;
       case "playerTwoClick":
         position.poinPlayer2 += 1;
-        if (position.poinPlayer2 >= 10) {
+        if (position.poinPlayer2 >= 50) {
           gameStart.startGame1 = false;
           gameStart.startGame2 = false;
-
           socketio.emit("finish", position);
+          socket.emit("start", gameStart);
         }
+        socket.emit("start", gameStart);
         socketio.emit("position", position);
         break;
       }
