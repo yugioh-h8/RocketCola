@@ -26,9 +26,9 @@ socketio.on("connection", socket => {
           gameStart.startGame1 = false;
           gameStart.startGame2 = false;
 
-          Socketio.emit("finish", position);
+          socketio.emit("finish", position);
         }
-        Socketio.emit("position", position);
+        socketio.emit("position", position);
         break;
       case "playerTwoClick":
         position.poinPlayer2 += data;
@@ -36,9 +36,9 @@ socketio.on("connection", socket => {
           gameStart.startGame1 = false;
           gameStart.startGame2 = false;
 
-          Socketio.emit("finish", position);
+          socketio.emit("finish", position);
         }
-        Socketio.emit("position", position);
+        socketio.emit("position", position);
         break;
       }
   });
@@ -49,13 +49,13 @@ socketio.on("connection", socket => {
         gameStart.startGame1 = true;
         position.poinPlayer1 = 0;
         position.poinPlayer2 = 0;
-        Socketio.emit("start", gameStart);
+        socketio.emit("start", gameStart);
         break;
       case "playerTwoReady":
         gameStart.startGame2 = true;
         position.poinPlayer2 = 0;
         position.poinPlayer1 = 0;
-        Socketio.emit("start", gameStart);
+        socketio.emit("start", gameStart);
         break;
     }
   })
